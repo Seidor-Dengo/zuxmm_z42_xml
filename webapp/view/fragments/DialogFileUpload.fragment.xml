@@ -1,0 +1,47 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified"
+	xmlns:layout="sap.ui.layout">
+
+  <Dialog
+  		title="{i18n>title_dialog_add_attachment}"
+	    type="Message"
+        contentWidth="850px"
+	    stretchOnPhone="true">
+	    
+    <content>  
+
+            <f:SimpleForm 	id="ID_FILE_XML"
+                        	editable="true">
+                                    <f:content>   							
+										<VBox>
+                                            <Label text="{i18n>form_label_1}" />
+                                            <u:FileUploader id="fileUploader"
+                                                            name="xmlFileUpload"
+                                                            uploadUrl="/sap/opu/odata/sap/ZGWMM_Z42_XML_SRV/AttachmentSet"
+                                                            buttonText="{i18n>button_label2}"
+                                                            uploadComplete= "onHanleUploadComplete"
+                                                            fileType="xml"
+                                                            width="700px"/>  
+                                        </VBox>
+                            		</f:content>
+            </f:SimpleForm> 	
+    </content>
+    <buttons>
+	    <Button 
+	    		text="{i18n>button_confirm}" 
+	    		icon="sap-icon://upload-to-cloud" 
+	    		press="onHandleConfirmUpload" />
+
+	    <Button 
+	    		text="{i18n>button_cancel}" 
+	    		type="Reject" 
+	    		icon="sap-icon://sys-cancel" 
+	    		press="onHandleCancelUpload" />
+    </buttons>
+  </Dialog>
+
+
+</c:FragmentDefinition>

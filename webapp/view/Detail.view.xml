@@ -1,0 +1,221 @@
+<mvc:View 
+	controllerName="com.seidor.zuxmmz42xml.controller.Detail" 
+	xmlns="sap.uxap" 
+	xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout"
+	xmlns:m="sap.m" 
+	xmlns:f="sap.f"
+	xmlns:ui="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc">
+	
+	<ObjectPageLayout id="ObjectPageLayout" showAnchorBarPopover="false">
+		
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="{Suppliername}" wrapping="true" class="sapUiSmallMarginEnd"/>
+				</expandedHeading>
+				
+				<snappedHeading>
+					<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
+						<m:FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
+							<m:Title text="{UnameName}" wrapping="true"/>
+						</m:FlexBox>
+					</m:FlexBox>
+				</snappedHeading>
+				
+				<navigationActions>
+
+					<m:OverflowToolbar style="Clear">
+						<m:Button type="Emphasized" 
+								icon="sap-icon://shipping-status"
+								text="{i18n>button_label4}"
+								enabled="{detailView>/enabledEdit}"
+								press="onHandleEntrada">
+							<m:layoutData><m:OverflowToolbarLayoutData priority="Low" /></m:layoutData>
+						</m:Button>	
+
+						<m:Button type="Transparent" 
+								icon="sap-icon://undo"
+								tooltip="{i18n>button_exit}"
+								press="onHandleClose">
+							<m:layoutData><m:OverflowToolbarLayoutData priority="Low" /></m:layoutData>
+						</m:Button>						
+					</m:OverflowToolbar>
+
+				</navigationActions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+
+		<headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
+				<f:Avatar 
+					src="image/nfe.png" 
+					displaySize="L" 
+					displayShape="Square" 
+					class="sapUiTinyMarginEnd"/>
+				<m:ToolbarSpacer width="30px"/>
+                <m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                    <m:HBox class="sapUiTinyMarginBottom">
+                        <m:Label text="{i18n>form_label_2}" />
+						<m:Text text="{Stcd1}" class="sapUiSmallMarginBegin"/>
+                    </m:HBox>
+                    <m:HBox class="sapUiTinyMarginBottom">
+                        <m:Label text="{i18n>form_label_3}" />
+                        <m:Text text="{Acckey}" tooltip="{i18n>Detail.tooltipTel}" class="sapUiSmallMarginBegin"/>
+                    </m:HBox>
+                    <m:HBox>
+                        <m:Label text="{i18n>form_label_4}" />
+                        <m:Text text="{Mblnr} {Mjahr}" class="sapUiSmallMarginBegin"/>
+                    </m:HBox>
+                    
+                </m:VBox>
+
+				<m:VBox class="sapUiLargeMarginBegin sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                    <m:HBox class="sapUiTinyMarginBottom">
+                       <m:Title titleStyle="H5" text="{i18n>section_header_2}"/>
+                    </m:HBox>
+					<m:HBox>
+						<m:ObjectNumber
+							class="sapMObjectNumberLarge"
+							number="{path: 'detailView>/TotalQuantidade', formatter:'.formatter.formatNumberBrazilDec4'}"
+							emphasized="false"
+							state="Warning"/>					
+ 					</m:HBox>
+                </m:VBox>
+
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                    <m:HBox class="sapUiTinyMarginBottom">
+                       <m:Title titleStyle="H5" text="{i18n>section_header_3}"/>
+                    </m:HBox>
+					<m:HBox>
+						<m:ObjectNumber
+							class="sapMObjectNumberLarge"
+							number="{path: 'detailView>/TotalValorUnitario', formatter:'.formatter.formatNumberBrazilDec4'}"
+							unit="BRL"
+							emphasized="false"
+							state="Warning"/>					
+ 					</m:HBox>
+                </m:VBox>
+
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                    <m:HBox class="sapUiTinyMarginBottom">
+                       <m:Title titleStyle="H5" text="{i18n>section_header_4}"/>
+                    </m:HBox>
+					<m:HBox>
+						<m:ObjectNumber
+							class="sapMObjectNumberLarge"
+							number="{path: 'detailView>/TotalValorTotal', formatter:'.formatter.formatNumberBrazilDec2'}"
+							unit="BRL"
+							emphasized="false"
+							state="Warning"/>					
+ 					</m:HBox>
+                </m:VBox>								
+
+			</m:FlexBox>
+			
+		</headerContent>
+
+        <sections>
+			<ObjectPageSection title="{i18n>section_header_1}" titleUppercase="false">
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+
+							<ui:Table
+									id="tableProdutosNF"
+									selectionMode="Multi"
+									rows="{detailView>/Products}"
+									rowsUpdated="onHandleCalculateTotalItems">
+								
+								<ui:noData>
+										<m:Text 
+											class="sapUiResponsiveMargin"
+											text="{i18n>message_table_no_data}"/>
+								</ui:noData>
+								
+								<ui:extension>
+									<m:Toolbar>
+											<m:ToolbarSpacer/>
+											<m:Button
+												id="IdButtonProdutoRemove"
+												icon="sap-icon://delete"
+												type="Reject"
+												text="{i18n>button_label5}"
+												press="onHandleDeleteItem"
+												enabled="{detailView>/enabledEdit}"/>
+										</m:Toolbar>
+								</ui:extension>
+								
+								<ui:columns>
+									
+									<ui:Column width="10rem">
+										<m:Label text="{i18n>table_title_column_1}" />
+										<ui:template>
+											<m:Text text="{detailView>Matnr}" wrapping="false" />
+										</ui:template>
+									</ui:Column>
+									
+									<ui:Column width="10rem">
+										<m:Label text="{i18n>table_title_column_2}" />
+										<ui:template>
+											<m:Text text="{detailView>Bismt}" wrapping="false" />
+										</ui:template>
+									</ui:Column>
+
+									<ui:Column width="25rem">
+										<m:Label text="{i18n>table_title_column_3}" />
+										<ui:template>
+											<m:Text text="{detailView>Maktx}" wrapping="false" />
+										</ui:template>
+									</ui:Column>
+
+									<ui:Column width="8rem">
+										<m:Label text="{i18n>table_title_column_4}" />
+										<ui:template>
+											<m:Text text="{detailView>Ncm}" wrapping="false" />
+										</ui:template>
+									</ui:Column>
+
+									<ui:Column width="10rem">
+										<m:Label text="{i18n>table_title_column_5}" />
+										<ui:template>
+											<m:ObjectNumber
+												number="{path: 'detailView>Menge', formatter:'.formatter.formatNumberBrazilDec4'}"
+												unit="{detailView>Meins}"
+												textAlign="End"/>									
+										</ui:template>
+									</ui:Column>
+
+									<ui:Column width="10rem">
+										<m:Label text="{i18n>table_title_column_6}" />
+										<ui:template>
+											<m:ObjectNumber
+												number="{path: 'detailView>ValorUnit', formatter:'.formatter.formatNumberBrazilDec4'}"
+												unit="{detailView>Waers}"
+												textAlign="End"/>							
+										</ui:template>
+									</ui:Column>
+
+									<ui:Column width="10rem">
+										<m:Label text="{i18n>table_title_column_7}" />
+										<ui:template>
+											<m:ObjectNumber
+												number="{path: 'detailView>ValorTotal', formatter:'.formatter.formatNumberBrazilDec2'}"
+												unit="{detailView>Waers}"
+												textAlign="End"/>
+										</ui:template>
+									</ui:Column>																									
+									
+								</ui:columns>
+							</ui:Table>
+
+
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+
+	</ObjectPageLayout>
+</mvc:View>

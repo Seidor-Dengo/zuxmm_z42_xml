@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGWMM_Z42_XML_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="I_SupplierType" sap:label="Supplier" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Supplier"/>
+                </Key>
+                <Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="SupplierName" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
+                <Property Name="SupplierAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Account Group" sap:quickinfo="Vendor account group"/>
+                <Property Name="SupplierName" Type="Edm.String" MaxLength="80" sap:label="Name of Supplier"/>
+                <Property Name="SupplierFullName" Type="Edm.String" MaxLength="220" sap:display-format="UpperCase" sap:label="Supplier Name" sap:quickinfo="Supplier Full Name"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Purpose Completed" sap:quickinfo="Business Purpose Completed Flag"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created by" sap:quickinfo="Name of Person who Created the Object"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Record Created On"/>
+                <Property Name="IsOneTimeAccount" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="One-time account" sap:quickinfo="Indicator: Is the account a one-time account?"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization" sap:quickinfo="Authorization Group"/>
+                <Property Name="VATRegistration" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="VAT Registration No." sap:quickinfo="VAT Registration Number"/>
+                <Property Name="AccountIsBlockedForPosting" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Posting Block(Deprecated)" sap:quickinfo="Central posting block"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Tax Jurisdiction"/>
+                <Property Name="SupplierCorporateGroup" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Group key"/>
+                <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number"/>
+                <Property Name="Industry" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Industry" sap:quickinfo="Industry key"/>
+                <Property Name="TaxNumber1" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Tax Number 1"/>
+                <Property Name="TaxNumber2" Type="Edm.String" MaxLength="11" sap:display-format="UpperCase" sap:label="Tax Number 2"/>
+                <Property Name="TaxNumber3" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Tax Number 3"/>
+                <Property Name="TaxNumber4" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Tax Number 4"/>
+                <Property Name="TaxNumber5" Type="Edm.String" MaxLength="60" sap:display-format="UpperCase" sap:label="Tax Number 5"/>
+                <Property Name="TaxNumber6" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Tax Number 6"/>
+                <Property Name="PostingIsBlocked" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Posting Block" sap:quickinfo="Central posting block"/>
+                <Property Name="PurchasingIsBlocked" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Purch. block" sap:quickinfo="Centrally imposed purchasing block"/>
+                <Property Name="InternationalLocationNumber1" Type="Edm.String" MaxLength="7" sap:display-format="NonNegative" sap:label="Int. location no. 1" sap:quickinfo="International location number  (part 1)"/>
+                <Property Name="InternationalLocationNumber2" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Int. location no. 2" sap:quickinfo="International location number (Part 2)"/>
+                <Property Name="InternationalLocationNumber3" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:label="Check digit" sap:quickinfo="Check digit for the international location number"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="OrganizationBPName1" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="OrganizationBPName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="City"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="35" sap:label="Street" sap:quickinfo="Street and House Number"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
+                <Property Name="ConcatenatedInternationalLocNo" Type="Edm.String" MaxLength="20" sap:label="Int. Location No." sap:quickinfo="Cocatenated International Location Number"/>
+                <Property Name="SupplierProcurementBlock" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Block Function" sap:quickinfo="Function That Will Be Blocked"/>
+                <Property Name="SuplrQualityManagementSystem" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Actual QM System" sap:quickinfo="Supplier's QM System"/>
+                <Property Name="SuplrQltyInProcmtCertfnValidTo" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="QM System Valid To" sap:quickinfo="Validity Date of Certification"/>
+                <Property Name="SupplierLanguage" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+                <Property Name="AlternativePayeeAccountNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Alternative Payee" sap:quickinfo="Account Number of the Alternative Payee"/>
+                <Property Name="PhoneNumber1" Type="Edm.String" MaxLength="16" sap:label="Telephone 1" sap:quickinfo="First telephone number"/>
+                <Property Name="FaxNumber" Type="Edm.String" MaxLength="31" sap:label="Fax Number"/>
+                <Property Name="IsNaturalPerson" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Natural Person"/>
+                <Property Name="TaxNumberResponsible" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Tax Number" sap:quickinfo="Tax Number at Responsible Tax Authority"/>
+                <Property Name="UK_ContractorBusinessType" Type="Edm.String" MaxLength="12" sap:label="Business Type" sap:quickinfo="Subcontractor's Business Type"/>
+                <Property Name="UK_PartnerTradingName" Type="Edm.String" MaxLength="30" sap:label="Prtnr's Trading Name" sap:quickinfo="Partner's Trading Name"/>
+                <Property Name="UK_PartnerTaxReference" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Partner's UTR" sap:quickinfo="Partner's Unique Tax Reference (UTR)"/>
+                <Property Name="UK_VerificationStatus" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Verification Status"/>
+                <Property Name="UK_VerificationNumber" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Verification Number"/>
+                <Property Name="UK_CompanyRegistrationNumber" Type="Edm.String" MaxLength="8" sap:label="Comp. House Reg. No." sap:quickinfo="Companies House Registration Number"/>
+                <Property Name="UK_VerifiedTaxStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Status" sap:quickinfo="Tax Status of the Verified Subcontractor"/>
+                <Property Name="FormOfAddress" Type="Edm.String" MaxLength="15" sap:label="Title"/>
+                <Property Name="ReferenceAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Reference Acct Group" sap:quickinfo="Reference Account Group for One-Time Account (Vendor)"/>
+                <Property Name="VATLiability" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Liable for VAT"/>
+                <Property Name="ResponsibleType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax Type"/>
+                <Property Name="TaxNumberType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Tax number type" sap:quickinfo="Tax Number Type"/>
+                <Property Name="FiscalAddress" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Fiscal address" sap:quickinfo="Account number of the master record with fiscal address"/>
+                <Property Name="BusinessType" Type="Edm.String" MaxLength="30" sap:label="Type of Business"/>
+                <Property Name="BirthDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date of Birth" sap:quickinfo="Date of Birth of the Person Subject to Withholding Tax"/>
+                <Property Name="PaymentIsBlockedForSupplier" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Payment block" sap:quickinfo="Payment Block"/>
+                <Property Name="SortField" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Search term" sap:quickinfo="Sort field"/>
+                <Property Name="PhoneNumber2" Type="Edm.String" MaxLength="16" sap:label="Telephone 2" sap:quickinfo="Second telephone number"/>
+                <Property Name="DeletionIndicator" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Deletion Flag" sap:quickinfo="Central Deletion Flag for Master Record"/>
+                <Property Name="TaxInvoiceRepresentativeName" Type="Edm.String" MaxLength="10" sap:label="Rep's Name" sap:quickinfo="Name of Representative"/>
+                <Property Name="IndustryType" Type="Edm.String" MaxLength="30" sap:label="Type of Industry"/>
+                <Property Name="IN_GSTSupplierClassification" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="GST Ven Class." sap:quickinfo="Vendor Classification for GST"/>
+                <Property Name="SuplrProofOfDelivRlvtCode" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Relevant for POD" sap:quickinfo="Supplier indicator relevant for proof of delivery"/>
+                <Property Name="TradingPartner" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Trading Partner No." sap:quickinfo="Company ID of Trading Partner"/>
+                <Property Name="BR_TaxIsSplit" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Tax split" sap:quickinfo="Tax Split"/>
+                <Property Name="AU_PayerIsPayingToCarryOnEnt" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Enterprise in AU" sap:quickinfo="Is payer making payment in course of carrying on enterprise"/>
+                <Property Name="AU_IndividualIsUnder18" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Individual" sap:quickinfo="Is an individual under 18 and payment does not exceed $350"/>
+                <Property Name="AU_PaymentIsExceeding75" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Payment does not exc" sap:quickinfo="The payment does not exceed $75, excl. GST"/>
+                <Property Name="AU_PaymentIsWhollyInputTaxed" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Wholly Input Taxed" sap:quickinfo="The supply that the payment relates to is wholly input taxed"/>
+                <Property Name="AU_PartnerIsSupplyWithoutGain" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Individual w/o gain" sap:quickinfo="The supply is made by an individual without gain"/>
+                <Property Name="AU_SupplierIsEntitledToABN" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="ABN Eligible" sap:quickinfo="The supplier is not entitled to an ABN"/>
+                <Property Name="AU_PaymentIsIncomeExempted" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Payment Exempt" sap:quickinfo="The whole of the payment is exempt income."/>
+                <Property Name="AU_SupplyIsMadeAsPrivateHobby" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Hobby" sap:quickinfo="An activity done as a private recreational pursuit"/>
+                <Property Name="AU_SupplyMadeIsOfDmstcNature" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Domestic" sap:quickinfo="wholly of a private or domestic nature"/>
+                <Property Name="IsToBeAcceptedAtOrigin" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Origin Acceptance" sap:quickinfo="Acceptance At Origin"/>
+                <Property Name="BPIsEqualizationTaxSubject" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Checkbox" sap:heading=""/>
+                <Property Name="BRSpcfcTaxBasePercentageCode" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:label="Tax Base" sap:quickinfo="Tax Base in Percentage"/>
+                <Property Name="DataMediumExchangeIndicator" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="DME Recipient Code" sap:quickinfo="Recipient Code for Data Medium Exchange"/>
+                <Property Name="DataExchangeInstructionKey" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Instruction Key" sap:quickinfo="Instruction Key for Data Medium Exchange"/>
+                <Property Name="SupplierIsSubRangeRelevant" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="VSR relevant" sap:quickinfo="Indicator: vendor sub-range relevant"/>
+                <Property Name="TrainStationName" Type="Edm.String" MaxLength="25" sap:label="Train Station" sap:quickinfo="Train station"/>
+                <Property Name="AlternativePayeeIsAllowed" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Payee in Document" sap:quickinfo="Indicator: Alternative Payee in Document Allowed?"/>
+                <Property Name="PaytSlipWthRefSubscriber" Type="Edm.String" MaxLength="11" sap:display-format="UpperCase" sap:label="PBC/ISR Number" sap:quickinfo="ISR Subscriber Number"/>
+                <Property Name="TranspServiceAgentStstcGrp" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Stat.grp, agent" sap:quickinfo="Shipment: statistics group, transportation service agent"/>
+                <Property Name="SupplierIsPlantRelevant" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Plant level relevant" sap:quickinfo="Indicator: plant level relevant"/>
+                <Property Name="SuplrTaxAuthorityAccountNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Tax Office" sap:quickinfo="Account Number of Master Record of Tax Office Responsible"/>
+                <Property Name="SupplierPlant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant" sap:quickinfo="Plant (Own or External)"/>
+                <Property Name="FactoryCalendar" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Factory Calendar" sap:quickinfo="Factory calendar key"/>
+                <Property Name="PaymentReason" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Payment Reason"/>
+                <Property Name="SupplierCentralDeletionIsBlock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central del.block" sap:quickinfo="Central deletion block for master record"/>
+            </EntityType>
+            <EntityType Name="I_Supplier_VHType" sap:label="Supplier" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Supplier"/>
+                </Key>
+                <Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="SupplierName" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
+                <Property Name="SupplierName" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Supplier Name"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization" sap:quickinfo="Authorization Group"/>
+                <Property Name="SupplierAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Account group" sap:quickinfo="Vendor account group"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Purpose Completed" sap:quickinfo="Business Purpose Completed Flag"/>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+                <Property Name="BusinessPartnerType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Business Partner Type"/>
+            </EntityType>
+            <EntityType Name="ZC_MM_Z42_XML_HType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="lifnr"/>
+                    <PropertyRef Name="acckey"/>
+                </Key>
+                <Property Name="lifnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="FullName" sap:label="Supplier" sap:heading="" sap:quickinfo="Account Number of Supplier" sap:value-list="standard"/>
+                <Property Name="acckey" Type="Edm.String" Nullable="false" MaxLength="44" sap:label="Access Key" sap:heading="" sap:quickinfo="44-Digit Access Key"/>
+                <Property Name="FullName" Type="Edm.String" MaxLength="220" sap:display-format="UpperCase" sap:label="Supplier Name" sap:quickinfo="Supplier Full Name"/>
+                <Property Name="Cnpj" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Tax Number 1" sap:heading=""/>
+                <Property Name="DataImport" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date" sap:heading="" sap:quickinfo="Field of type DATS"/>
+                <Property Name="UserImport" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User" sap:heading="" sap:quickinfo="User Name in User Master Record"/>
+                <NavigationProperty Name="to_supplier" Relationship="ZGWMM_Z42_XML_SRV.assoc_BD0B7AC4C59B56CE1D1EA5972A872CDF" FromRole="FromRole_assoc_BD0B7AC4C59B56CE1D1EA5972A872CDF" ToRole="ToRole_assoc_BD0B7AC4C59B56CE1D1EA5972A872CDF"/>
+            </EntityType>
+            <Association Name="assoc_BD0B7AC4C59B56CE1D1EA5972A872CDF" sap:content-version="1">
+                <End Type="ZGWMM_Z42_XML_SRV.ZC_MM_Z42_XML_HType" Multiplicity="1" Role="FromRole_assoc_BD0B7AC4C59B56CE1D1EA5972A872CDF"/>
+                <End Type="ZGWMM_Z42_XML_SRV.I_SupplierType" Multiplicity="1" Role="ToRole_assoc_BD0B7AC4C59B56CE1D1EA5972A872CDF"/>
+            </Association>
+            <EntityContainer Name="ZGWMM_Z42_XML_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="I_Supplier" EntityType="ZGWMM_Z42_XML_SRV.I_SupplierType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_Supplier_VH" EntityType="ZGWMM_Z42_XML_SRV.I_Supplier_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZC_MM_Z42_XML_H" EntityType="ZGWMM_Z42_XML_SRV.ZC_MM_Z42_XML_HType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_BD0B7AC4C59B56CE1D1EA5972A872CDF" Association="ZGWMM_Z42_XML_SRV.assoc_BD0B7AC4C59B56CE1D1EA5972A872CDF" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_MM_Z42_XML_H" Role="FromRole_assoc_BD0B7AC4C59B56CE1D1EA5972A872CDF"/>
+                    <End EntitySet="I_Supplier" Role="ToRole_assoc_BD0B7AC4C59B56CE1D1EA5972A872CDF"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZGWMM_Z42_XML_SRV.ZC_MM_Z42_XML_HType/lifnr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Supplier"/>
+                        <PropertyValue Property="CollectionPath" String="I_Supplier_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="lifnr"/>
+                                    <PropertyValue Property="ValueListProperty" String="Supplier"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SupplierName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartner"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartnerType"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZGWMM_Z42_XML_SRV.ZGWMM_Z42_XML_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ZGWMM_Z42_XML_SRV.ZGWMM_Z42_XML_SRV_Entities/ZC_MM_Z42_XML_H" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_supplier"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://vhdcbds4ci.sap.dengo.com:8000/sap/opu/odata/sap/ZGWMM_Z42_XML_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://vhdcbds4ci.sap.dengo.com:8000/sap/opu/odata/sap/ZGWMM_Z42_XML_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

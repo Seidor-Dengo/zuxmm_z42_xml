@@ -1,0 +1,74 @@
+<mvc:View controllerName="com.seidor.zuxmmz42xml.controller.Worklist"
+    xmlns:mvc="sap.ui.core.mvc" 
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:u="sap.ui.unified"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable">
+
+   <semantic:SemanticPage
+        id="page"
+        preserveHeaderStateOnScroll="true">
+        <semantic:titleHeading>
+            <Title
+                id="listPageTitle"
+                text="{i18n>title}"
+                level="H2"/>
+        </semantic:titleHeading>
+
+        <semantic:headerContent>
+                <smartFilterBar:SmartFilterBar id="smartFilterBarNF" 
+                                                entitySet="ZC_MM_Z42_XML_H">
+                    <smartFilterBar:layoutData>
+                        <FlexItemData shrinkFactor="0"/>
+                    </smartFilterBar:layoutData>
+                </smartFilterBar:SmartFilterBar>
+        </semantic:headerContent>
+
+        <semantic:content>
+			<smartTable:SmartTable id="ID_TABLE_NF"
+									entitySet="ZC_MM_Z42_XML_H" 
+									smartFilterId="smartFilterBarNF"
+									tableType="Table" 
+									header="{i18n>WorklistTableHeader}" 
+									placeToolbarInTable="true"
+                                    useVariantManagement="false"
+									class="sapUiResponsiveContentPadding">
+
+				<smartTable:customToolbar>
+					<OverflowToolbar design="Transparent">
+						<ToolbarSpacer/>
+                       	<Button id="ID_BUTTON_ENTRADA"
+                                text="{i18n>button_label3}"
+                                type="Transparent"
+                                icon="sap-icon://cart-3"
+                                press="onHandleEntrada"/> 
+
+                       	<Button id="ID_BUTTON_ADD_ATTACH"
+                                text="{i18n>button_label1}"
+                                type="Emphasized"
+                                icon="sap-icon://attachment"
+                                press="onHandleAddAttachment"/>   
+
+                        <Button id="ID_BUTTON_DELETE"
+                                text="{i18n>button_label6}"
+                                type="Reject"
+                                icon="sap-icon://delete"
+                                press="onHandleDelete"/>                                                                                        
+					</OverflowToolbar>
+				</smartTable:customToolbar>  
+
+                <smartTable:customData>
+					<core:CustomData key="dateFormatSettings" value='\{"pattern": "dd/MM/yyyy" \}'/>
+				</smartTable:customData>   	
+
+				<smartTable:layoutData>
+					<FlexItemData growFactor="1" baseSize="0%"/>
+				</smartTable:layoutData>	
+			</smartTable:SmartTable>
+
+        </semantic:content>
+    </semantic:SemanticPage>    
+</mvc:View>
