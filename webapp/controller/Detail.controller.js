@@ -4,9 +4,10 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/m/MessageToast",
     "sap/ui/model/json/JSONModel",
-	"sap/ui/core/BusyIndicator"
+	"sap/ui/core/BusyIndicator",
+	"sap/ui/core/Fragment"
 ],
-function (BaseController, formatter, MessageBox, MessageToast, JSONModel, BusyIndicator) {
+function (BaseController, formatter, MessageBox, MessageToast, JSONModel, BusyIndicator, Fragment) {
     "use strict";
 
     return BaseController.extend("com.seidor.zuxmmz42xml.controller.Detail", {
@@ -28,7 +29,15 @@ function (BaseController, formatter, MessageBox, MessageToast, JSONModel, BusyIn
             });
 
             this.getRouter().getRoute("detail").attachPatternMatched(this._onDetailMatched, this);
-            this.setModel(oViewModel, "detailView");            
+            this.setModel(oViewModel, "detailView");    
+			
+
+			// set message model
+			this.oMessageManager = sap.ui.getCore().getMessageManager();
+			this.getView().setModel(this.oMessageManager.getMessageModel(), "message");
+
+			// activate automatic message generation for complete view
+			this.oMessageManager.registerObject(this.getView(), true);	
         },
 
         /* =========================================================== */
@@ -87,26 +96,28 @@ function (BaseController, formatter, MessageBox, MessageToast, JSONModel, BusyIn
 				oEntry.ProductsJson = JSON.stringify(oProducts);
 
 				BusyIndicator.show();
+				this.oMessageManager.removeAllMessages();
 
 				oDataModel.create("/HeaderSet", oEntry, {
 					success: function (oData, oResponse) {
 						BusyIndicator.hide();
-						MessageToast.show(this.getResourceBundle().getText("message_success_created_moviment"));
+						MessageBox.success(this.getResourceBundle().getText("message_success_created_moviment"));
 						oViewModel.setProperty("/enabledEdit", false)
 						this.getModel().refresh(true);                           
 					}.bind(this),
 					error: function(oError){ 
 						BusyIndicator.hide();
-						try{
-							var sMsg = JSON.parse(oError.responseText);
-							MessageBox.error(sMsg.error.message.value, 
-									  { styleClass: this.getOwnerComponent().getContentDensityClass() }
-							 );
-						}catch(err){};
 					}.bind(this)
 				});				
 			
 		},
+
+		onMessagePopoverPress : function (oEvent) {
+			var oSourceControl = oEvent.getSource();
+			this._getMessagePopover().then(function(oMessagePopover){
+				oMessagePopover.openBy(oSourceControl);
+			});
+		},		
 
         /* =========================================================== */
         /* internal methods                                            */
@@ -150,6 +161,7 @@ function (BaseController, formatter, MessageBox, MessageToast, JSONModel, BusyIn
 				aProducts = [];
 
 			oViewModel.setProperty("/Products", []);	
+			this.oMessageManager.removeAllMessages();
 
 			if (!!oElementBinding.getBoundContext()) {
 				var oObject = oView.getBindingContext().getObject();
@@ -223,7 +235,23 @@ function (BaseController, formatter, MessageBox, MessageToast, JSONModel, BusyIn
 				}, this); 
 				
 				oViewModel.setProperty("/Products", oEntryTable);
-		}
+		},
+
+		_getMessagePopover : function () {
+			var oView = this.getView();
+
+			// create popover lazily (singleton)
+			if (!this._pMessagePopover) {
+				this._pMessagePopover = Fragment.load({
+					id: oView.getId(),
+					name: "com.seidor.zuxmmz42xml.view.fragments.MessagePopover"
+				}).then(function (oMessagePopover) {
+					oView.addDependent(oMessagePopover);
+					return oMessagePopover;
+				});
+			}
+			return this._pMessagePopover;
+		}		
            
     });
 });

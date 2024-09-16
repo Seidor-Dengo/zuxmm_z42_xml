@@ -8,7 +8,7 @@
 	xmlns:ui="sap.ui.table"
 	xmlns:mvc="sap.ui.core.mvc">
 	
-	<ObjectPageLayout id="ObjectPageLayout" showAnchorBarPopover="false">
+	<ObjectPageLayout id="ObjectPageLayout" showAnchorBarPopover="false" showFooter="true">
 		
 		<headerTitle>
 			<ObjectPageDynamicHeaderTitle>
@@ -24,7 +24,7 @@
 					</m:FlexBox>
 				</snappedHeading>
 				
-				<navigationActions>
+				<!-- <navigationActions>
 
 					<m:OverflowToolbar style="Clear">
 						<m:Button type="Emphasized" 
@@ -43,7 +43,7 @@
 						</m:Button>						
 					</m:OverflowToolbar>
 
-				</navigationActions>
+				</navigationActions> -->
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
@@ -216,6 +216,28 @@
 				</subSections>
 			</ObjectPageSection>
 		</sections>
+
+		<footer>
+			<m:OverflowToolbar>
+				<m:content>
+					<m:Button type="Back" 
+								tooltip="{i18n>button_exit}"
+								press="onHandleClose"/>
+					<m:Button
+						icon="sap-icon://alert"
+						text="{=${message>/}.length}"
+						visible="{=${message>/}.length > 0}"
+						type="Emphasized"
+						press="onMessagePopoverPress"/>								
+					<m:ToolbarSpacer/>
+					<m:Button type="Transparent" 
+								icon="sap-icon://shipping-status"
+								text="{i18n>button_label4}"
+								enabled="{detailView>/enabledEdit}"
+								press="onHandleEntrada"/>
+				</m:content>
+			</m:OverflowToolbar>
+		</footer> 		
 
 	</ObjectPageLayout>
 </mvc:View>
