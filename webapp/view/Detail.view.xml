@@ -177,6 +177,40 @@
 										</ui:template>
 									</ui:Column>
 
+									<ui:Column width="7rem">
+										<m:Label text="{i18n>table_title_column_8}" />
+										<ui:template>
+											<m:Input value="{detailView>Charg}" wrapping="false" maxLength="10" enabled="{detailView>/enabledEdit}"/>
+										</ui:template>
+									</ui:Column>			
+
+									<ui:Column width="10rem">
+										<m:Label text="{i18n>table_title_column_9}" />
+										<ui:template>
+												<m:DatePicker 	value="{ path: 'detailView>DataValidade',  
+																type: 'sap.ui.model.type.Date', 
+																formatOptions: {  pattern: 'dd.MM.yyyy', 
+																				strictParsing: true , 
+																				UTC: true } }"
+																placeholder="{i18n>table_tooltip_1}"
+																enabled="{detailView>/enabledEdit}"/>
+
+										</ui:template>
+									</ui:Column>
+
+									<ui:Column width="10rem">
+										<m:Label text="{i18n>table_title_column_10}" />
+										<ui:template>
+												<m:DatePicker 	value="{ path: 'detailView>DataFabricacao',  
+																type: 'sap.ui.model.type.Date', 
+																formatOptions: {  pattern: 'dd.MM.yyyy', 
+																				strictParsing: true , 
+																				UTC: true } }"
+																placeholder="{i18n>table_tooltip_1}"
+																enabled="{detailView>/enabledEdit}"/>
+										</ui:template>
+									</ui:Column>																								
+
 									<ui:Column width="10rem">
 										<m:Label text="{i18n>table_title_column_5}" />
 										<ui:template>

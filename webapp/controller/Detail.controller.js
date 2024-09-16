@@ -93,6 +93,18 @@ function (BaseController, formatter, MessageBox, MessageToast, JSONModel, BusyIn
 
 				delete oEntry.__metadata;
 				delete oEntry.ItemSet;
+				
+
+				oProducts.forEach(function(oItem, oIndex){
+					if(!!oItem.DataValidade){
+						oProducts[oIndex].Data_Validade = oItem.DataValidade;
+					}
+
+					if(!!oItem.DataFabricacao){
+						oProducts[oIndex].Data_Fabricacao = oItem.DataFabricacao;					
+					}
+				}, this);
+
 				oEntry.ProductsJson = JSON.stringify(oProducts);
 
 				BusyIndicator.show();
