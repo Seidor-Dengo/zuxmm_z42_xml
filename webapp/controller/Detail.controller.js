@@ -107,6 +107,8 @@ function (BaseController, formatter, MessageBox, MessageToast, JSONModel, BusyIn
 					}.bind(this),
 					error: function(oError){ 
 						BusyIndicator.hide();
+						MessageBox.error(this.getResourceBundle().getText("message_error_created_moviment"), 
+                                        { styleClass: this.getOwnerComponent().getContentDensityClass() });
 					}.bind(this)
 				});				
 			
