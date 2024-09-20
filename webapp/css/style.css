@@ -1,1 +1,6 @@
 /* Enter your custom styles here */
+
+
+.sapUxAPObjectPageSectionHeader {
+    height: 0rem        !important;
+}

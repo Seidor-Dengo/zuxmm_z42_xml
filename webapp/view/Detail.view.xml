@@ -1,61 +1,29 @@
-<mvc:View 
-	controllerName="com.seidor.zuxmmz42xml.controller.Detail" 
+<mvc:View
+    xmlns:semantic="sap.f.semantic"
+   	controllerName="com.seidor.zuxmmz42xml.controller.Detail" 
 	xmlns="sap.uxap" 
 	xmlns:core="sap.ui.core"
 	xmlns:layout="sap.ui.layout"
 	xmlns:m="sap.m" 
 	xmlns:f="sap.f"
 	xmlns:ui="sap.ui.table"
-	xmlns:mvc="sap.ui.core.mvc">
-	
-	<ObjectPageLayout id="ObjectPageLayout" showAnchorBarPopover="false" showFooter="true">
-		
-		<headerTitle>
-			<ObjectPageDynamicHeaderTitle>
-				<expandedHeading>
-					<m:Title text="{Suppliername}" wrapping="true" class="sapUiSmallMarginEnd"/>
-				</expandedHeading>
-				
-				<snappedHeading>
-					<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
-						<m:FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
-							<m:Title text="{UnameName}" wrapping="true"/>
-						</m:FlexBox>
-					</m:FlexBox>
-				</snappedHeading>
-				
-				<!-- <navigationActions>
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+    height="100%">
 
-					<m:OverflowToolbar style="Clear">
-						<m:Button type="Emphasized" 
-								icon="sap-icon://shipping-status"
-								text="{i18n>button_label4}"
-								enabled="{detailView>/enabledEdit}"
-								press="onHandleEntrada">
-							<m:layoutData><m:OverflowToolbarLayoutData priority="Low" /></m:layoutData>
-						</m:Button>	
+    <semantic:SemanticPage
+        id="listPage"
+		showFooter="true"
+        preserveHeaderStateOnScroll="true">
+        <semantic:titleHeading>
+            <m:Title
+                id="listPageTitle"
+                text="{Suppliername}"
+                level="H2"/>
+        </semantic:titleHeading>       
 
-						<m:Button type="Transparent" 
-								icon="sap-icon://undo"
-								tooltip="{i18n>button_exit}"
-								press="onHandleClose">
-							<m:layoutData><m:OverflowToolbarLayoutData priority="Low" /></m:layoutData>
-						</m:Button>						
-					</m:OverflowToolbar>
-
-				</navigationActions> -->
-			</ObjectPageDynamicHeaderTitle>
-		</headerTitle>
-
-		<headerContent>
-			<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
-				<f:Avatar 
-					src="image/nfe.png" 
-					displaySize="L" 
-					displayShape="Square" 
-					class="sapUiTinyMarginEnd"/>
-				<m:ToolbarSpacer width="30px"/>
-                <m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+        <semantic:headerContent>
+            <layout:VerticalLayout>
                     <m:HBox class="sapUiTinyMarginBottom">
                         <m:Label text="{i18n>form_label_2}" />
 						<m:Text text="{Stcd1}" class="sapUiSmallMarginBegin"/>
@@ -68,10 +36,9 @@
                         <m:Label text="{i18n>form_label_4}" />
                         <m:Text text="{Mblnr} {Mjahr}" class="sapUiSmallMarginBegin"/>
                     </m:HBox>
-                    
-                </m:VBox>
+            </layout:VerticalLayout>
 
-				<m:VBox class="sapUiLargeMarginBegin sapUiLargeMarginEnd sapUiSmallMarginBottom">
+			<layout:VerticalLayout class="sapUiLargeMarginBegin">
                     <m:HBox class="sapUiTinyMarginBottom">
                        <m:Title titleStyle="H5" text="{i18n>section_header_2}"/>
                     </m:HBox>
@@ -82,9 +49,9 @@
 							emphasized="false"
 							state="Warning"/>					
  					</m:HBox>
-                </m:VBox>
+            </layout:VerticalLayout>
 
-				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+			<layout:VerticalLayout class="sapUiLargeMarginBegin">
                     <m:HBox class="sapUiTinyMarginBottom">
                        <m:Title titleStyle="H5" text="{i18n>section_header_3}"/>
                     </m:HBox>
@@ -96,9 +63,9 @@
 							emphasized="false"
 							state="Warning"/>					
  					</m:HBox>
-                </m:VBox>
+            </layout:VerticalLayout>
 
-				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+			<layout:VerticalLayout class="sapUiLargeMarginBegin">
                     <m:HBox class="sapUiTinyMarginBottom">
                        <m:Title titleStyle="H5" text="{i18n>section_header_4}"/>
                     </m:HBox>
@@ -110,21 +77,15 @@
 							emphasized="false"
 							state="Warning"/>					
  					</m:HBox>
-                </m:VBox>								
+            </layout:VerticalLayout>						
 
-			</m:FlexBox>
-			
-		</headerContent>
+        </semantic:headerContent>
 
-        <sections>
-			<ObjectPageSection title="{i18n>section_header_1}" titleUppercase="false">
-				<subSections>
-					<ObjectPageSubSection>
-						<blocks>
-
+        <semantic:content>
 							<ui:Table
 									id="tableProdutosNF"
 									selectionMode="Multi"
+									visibleRowCountMode="Auto"
 									rows="{detailView>/Products}"
 									rowsUpdated="onHandleCalculateTotalItems">
 								
@@ -135,7 +96,8 @@
 								</ui:noData>
 								
 								<ui:extension>
-									<m:Toolbar>
+										<m:OverflowToolbar style="Clear">
+											<m:Title id="title" text="{i18n>section_header_1}"/>
 											<m:ToolbarSpacer/>
 											<m:Button
 												id="IdButtonProdutoRemove"
@@ -144,7 +106,7 @@
 												text="{i18n>button_label5}"
 												press="onHandleDeleteItem"
 												enabled="{detailView>/enabledEdit}"/>
-										</m:Toolbar>
+										</m:OverflowToolbar>
 								</ui:extension>
 								
 								<ui:columns>
@@ -242,36 +204,29 @@
 									</ui:Column>																									
 									
 								</ui:columns>
+
+								<ui:layoutData>
+									<m:FlexItemData growFactor="1" baseSize="0%"/>
+								</ui:layoutData>
+
 							</ui:Table>
+        </semantic:content>
 
+		<semantic:titleCustomIconActions>
+			<m:OverflowToolbarButton icon="sap-icon://undo" text="{i18n>button_exit}" press="onHandleClose"/>
+		</semantic:titleCustomIconActions>
 
-						</blocks>
-					</ObjectPageSubSection>
-				</subSections>
-			</ObjectPageSection>
-		</sections>
+		<semantic:messagesIndicator>
+			<semantic:MessagesIndicator press="onMessagePopoverPress"/>
+		</semantic:messagesIndicator>		
 
-		<footer>
-			<m:OverflowToolbar>
-				<m:content>
-					<m:Button type="Back" 
-								tooltip="{i18n>button_exit}"
-								press="onHandleClose"/>
-					<m:Button
-						icon="sap-icon://alert"
-						text="{=${message>/}.length}"
-						visible="{=${message>/}.length > 0}"
-						type="Emphasized"
-						press="onMessagePopoverPress"/>								
-					<m:ToolbarSpacer/>
-					<m:Button type="Transparent" 
+		<semantic:footerCustomActions>
+					<m:Button type="Emphasized" 
 								icon="sap-icon://shipping-status"
 								text="{i18n>button_label4}"
 								enabled="{detailView>/enabledEdit}"
 								press="onHandleEntrada"/>
-				</m:content>
-			</m:OverflowToolbar>
-		</footer> 		
+		</semantic:footerCustomActions>
 
-	</ObjectPageLayout>
+    </semantic:SemanticPage>
 </mvc:View>
