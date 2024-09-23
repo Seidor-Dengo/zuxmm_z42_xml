@@ -245,7 +245,7 @@ function (BaseController, formatter, MessageBox, MessageToast, JSONModel, BusyIn
 				oEntryItem;
 				
 				oSelectedIndices.forEach(function(oItem) {
-					oEntryItem = oContextTable[oItem].getObject();
+					oEntryItem = oTable.getContextByIndex(oItem).getObject(); 		
 					oEntryTable = oEntryTable.filter(itm => { return itm.Zeile !== oEntryItem.Zeile });
 				}, this); 
 				
