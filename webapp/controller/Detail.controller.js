@@ -79,7 +79,8 @@ function (BaseController, formatter, MessageBox, MessageToast, JSONModel, BusyIn
                 actions: [MessageBox.Action.YES, MessageBox.Action.CANCEL],
 				onClose: function (sAction) {
 					if(sAction == MessageBox.Action.YES)
-						this._deleteDBProdutos();
+						//this._deleteDBProdutos();
+						this._deleteViewProdutos();
 				}.bind(this),
 				dependentOn: this.getView()
 			}); 
